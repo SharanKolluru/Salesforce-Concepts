@@ -1,0 +1,16 @@
+Integer startTime = Limits.getCpuTime();
+Integer startHeap = Limits.getHeapSize(); 
+
+String objectName = 'Account'; 
+Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
+for(Integer i = 0; i < 500; i++) {    
+  Schema.SObjectType sobjType = gd.get(objectName);    
+  Schema.DescribeSObjectResult describeResult = sobjType.getDescribe();
+}
+
+Integer endTime = Limits.getCpuTime();
+Integer endHeap = Limits.getHeapSize();
+
+Integer timeResult = endTime - startTime;
+Integer heapResult = endHeap - startHeap;
+
